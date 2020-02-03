@@ -11,11 +11,11 @@ import ReSwift
 import Swinject
 
 protocol GithubDetailInteractor {
-    func fetchDetail(reponame : String)
+    func fetchDetail(reponame: String)
 }
 
-class GithubDetailDefaultInteractor : GithubDetailInteractor {
-    weak var presenter : GithubDetailInteractorToPresenterProtocol?
+class GithubDetailDefaultInteractor: GithubDetailInteractor {
+    weak var presenter: GithubDetailInteractorToPresenterProtocol?
 
     init() {
         store.subscribe(self) {
@@ -24,21 +24,21 @@ class GithubDetailDefaultInteractor : GithubDetailInteractor {
             })
         }
     }
-    
-    func fetchDetail(reponame : String) {
+
+    func fetchDetail(reponame: String) {
         let provider = Container.sharedContainer.resolve(DataProvider.self, name: "GithubDetail") as? GithubDetailDataProvider
         provider?.name = reponame
         provider?.requestData()
     }
-    
+
     deinit {
         print("deinit")
         store.unsubscribe(self)
     }
 }
 
-extension GithubDetailDefaultInteractor : StoreSubscriber {
-    
+extension GithubDetailDefaultInteractor: StoreSubscriber {
+
     func newState(state: GithubDetailState) {
         if let data = state.model {
             presenter?.didFetchData(data: data)
@@ -47,5 +47,5 @@ extension GithubDetailDefaultInteractor : StoreSubscriber {
             presenter?.didGetError(error: errorMessage)
         }
     }
-    
+
 }

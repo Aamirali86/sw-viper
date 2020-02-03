@@ -9,7 +9,7 @@
 import Foundation
 import ReSwift
 
-func appReducer(action : Action, state : AppState?) -> AppState {
+func appReducer(action: Action, state: AppState?) -> AppState {
     return AppState(
         listState: githubListReducer(action: action, state: state?.listState),
         detailState: githubDetailReducer(action: action, state: state?.detailState)

@@ -10,14 +10,14 @@ import Foundation
 import CoreData
 
 class CoreDataManager {
-    var context : NSManagedObjectContext!
-    
-    init(context : NSManagedObjectContext) {
+    var context: NSManagedObjectContext!
+
+    init(context: NSManagedObjectContext) {
         self.context = context
     }
 
     // MARK: - Core Data Saving support
-    
+
     func saveContext () {
         if context.hasChanges {
             do {
@@ -29,29 +29,29 @@ class CoreDataManager {
             }
         }
     }
-    
-    func fetchObjects(_ entity : String, predicate : NSPredicate? = nil) -> [NSManagedObject]? {
-        
+
+    func fetchObjects(_ entity: String, predicate: NSPredicate? = nil) -> [NSManagedObject]? {
+
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
-        var result:[NSManagedObject]?
-        
+        var result: [NSManagedObject]?
+
         if predicate != nil {
             fetchRequest.predicate = predicate
         }
-        
+
         do {
             result = try context.fetch(fetchRequest) as? [NSManagedObject]
         } catch {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
-        
+
         return result
     }
-    
-    func deleteObjects(_ entity : String ,  predicate : NSPredicate? = nil) {
+
+    func deleteObjects(_ entity: String, predicate: NSPredicate? = nil) {
         let data = fetchObjects(entity, predicate: predicate)
-        
+
         if let dataToDelete = data {
             dataToDelete.forEach({ (_data) in
                 context.delete(_data)
@@ -64,10 +64,10 @@ class CoreDataManager {
             }
         }
     }
-    
-    func getEntityIfExist(_ entity : String, predicate : NSPredicate? = nil) -> NSManagedObject? {
+
+    func getEntityIfExist(_ entity: String, predicate: NSPredicate? = nil) -> NSManagedObject? {
         let data = fetchObjects(entity, predicate: predicate)
-        var object : NSManagedObject? = nil
+        var object: NSManagedObject?
         if let _data = data {
             object = (_data.count <= 0) ? data?.first : nil
         }
@@ -75,4 +75,3 @@ class CoreDataManager {
     }
 
 }
-

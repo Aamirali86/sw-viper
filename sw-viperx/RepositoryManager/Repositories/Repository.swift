@@ -8,19 +8,19 @@
 
 import Foundation
 
-protocol ReadableDatabase : class {
+protocol ReadableDatabase: class {
     associatedtype E
-    func fetch(by predicate:NSPredicate?) -> [E]
+    func fetch(by predicate: NSPredicate?) -> [E]
     func fetchAll() -> [E]
 }
 
-protocol WriteableDatabase : class {
+protocol WriteableDatabase: class {
     associatedtype E
-    func save(_ object: E) -> Void
-    func save(_ objects: [E]) -> Void
-    func update(_ object: E) -> Void
-    func delete(by predicate: NSPredicate?) -> Void
-    func deleteAll() -> Void
+    func save(_ object: E)
+    func save(_ objects: [E])
+    func update(_ object: E)
+    func delete(by predicate: NSPredicate?)
+    func deleteAll()
 }
 
 typealias Repository = ReadableDatabase & WriteableDatabase

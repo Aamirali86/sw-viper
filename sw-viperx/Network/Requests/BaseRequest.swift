@@ -28,23 +28,23 @@ protocol BaseRequest {
 }
 
 extension BaseRequest {
-    
-    var baseUrl : String  {
+
+    var baseUrl: String {
         get { return "https://api.github.com/" }
     }
-    
+
     var headers: Headers {
         var headers = [_contentType: "application/json"]
-        
+
         guard let token = Self.getToken() else { return headers }
         headers[_tokenHeaderKey] = token
         return headers
     }
-    
+
     var url: String {
         return baseUrl + apiURL
     }
-    
+
 }
 
 //For testing

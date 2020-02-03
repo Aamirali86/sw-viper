@@ -9,18 +9,18 @@
 import Foundation
 
 class GithubDetailService {
-    private var networkManager:NetworkManager
-    
-    init(networkManager : NetworkManager) {
+    private var networkManager: NetworkManager
+
+    init(networkManager: NetworkManager) {
         self.networkManager = networkManager
     }
-    
-    func fetchDetail(repo : String, completion: @escaping (ResponseData<Any, NetworkError>) -> Void) {
+
+    func fetchDetail(repo: String, completion: @escaping (ResponseData<Any, NetworkError>) -> Void) {
         let githubDetailRequest = GithubDetailRequest(username: "Aamirali86", repoName: repo)
-        
+
         networkManager.sendRequest(githubDetailRequest) { response in
             completion(response)
         }
     }
-    
+
 }

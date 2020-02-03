@@ -6,7 +6,7 @@
 //  Copyright © 2018 Venturedive. All rights reserved.
 //
 
-protocol GithubListView : class {
+protocol GithubListView: class {
     func displayList(datasource: [GithubListViewModel])
-    func displayError(errorMessage : String)
+    func displayError(errorMessage: String)
 }

@@ -9,47 +9,46 @@
 import Foundation
 import UIKit
 
-class GithubListViewController : UIViewController, GithubListView {
-    
+class GithubListViewController: UIViewController, GithubListView {
+
     @IBOutlet weak var tableView: UITableView!
-    
+
     var datasource: [GithubListViewModel]?
-    var presenter : GithubListPresenter?
-    
-    
+    var presenter: GithubListPresenter?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupTableView()
         startActivityIndicator()
         presenter?.loadContent()
     }
-    
+
     private func setupTableView() {
         tableView.register(UINib(nibName: String(describing: GithubListViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: GithubListViewCell.self))
     }
-    
+
     func displayList(datasource: [GithubListViewModel]) {
         stopActivityIndicator()
         self.datasource = datasource
         tableView.reloadData()
     }
-    
+
     func displayError(errorMessage: String) {
         stopActivityIndicator()
         showAlert(and: errorMessage)
     }
-    
+
 }
 
-extension GithubListViewController : UITableViewDelegate, UITableViewDataSource {
+extension GithubListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = datasource?.count {
             return count
         }
         return 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "GithubListViewCell") as? GithubListViewCell {
             cell.setupCell(datasource![indexPath.row])
@@ -57,7 +56,7 @@ extension GithubListViewController : UITableViewDelegate, UITableViewDataSource 
         }
         return UITableViewCell()
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.presentDetailView(datasource![indexPath.row])
     }

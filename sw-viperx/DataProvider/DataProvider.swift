@@ -6,6 +6,6 @@
 //  Copyright © 2018 Venturedive. All rights reserved.
 //
 
-protocol DataProvider : class {
-    func requestData()    
+protocol DataProvider: class {
+    func requestData()
 }

@@ -9,10 +9,10 @@
 import Foundation
 import ReSwift
 
-func githubListReducer(action : Action, state : GithubListState?) -> GithubListState {
-    
+func githubListReducer(action: Action, state: GithubListState?) -> GithubListState {
+
     var state = state ?? GithubListState(list: [], error: nil)
-    
+
     switch action {
     case let listAction as GithubListAction:
         switch listAction {
@@ -24,6 +24,6 @@ func githubListReducer(action : Action, state : GithubListState?) -> GithubListS
     default:
         break
     }
-    
+
     return state
 }

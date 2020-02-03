@@ -9,17 +9,17 @@
 import Foundation
 import ReSwift
 
-func githubDetailReducer(action : Action, state : GithubDetailState?) -> GithubDetailState {
-    
+func githubDetailReducer(action: Action, state: GithubDetailState?) -> GithubDetailState {
+
     var state = state ?? GithubDetailState(model: nil, error: nil)
-    
+
     switch action {
     case let detailAction as GithubDetailAction:
-        handleAction(action : detailAction, state: &state)
+        handleAction(action: detailAction, state: &state)
     default:
         break
     }
-    
+
     return state
 }
 
@@ -30,5 +30,5 @@ private func handleAction(action: GithubDetailAction, state : inout GithubDetail
     case .failure(let error):
         state.error = error
     }
-    
+
 }

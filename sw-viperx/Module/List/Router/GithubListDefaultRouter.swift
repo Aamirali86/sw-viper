@@ -8,20 +8,20 @@
 
 import UIKit
 
-class GithubListDefaultRouter : GithubListRouter {
-    
+class GithubListDefaultRouter: GithubListRouter {
+
     static func getListViewController() -> UIViewController? {
         guard let listVC = GithubListDefaultRouter.initializeViewController() as? GithubListViewController else { return nil }
         return listVC
     }
-    
-    func navigateToDetailView(from view:GithubListView?, withItem item: GithubListViewModel) {
+
+    func navigateToDetailView(from view: GithubListView?, withItem item: GithubListViewModel) {
         guard let toVC = GithubDetailDefaultRouter.getDetailViewController() as? GithubDetailViewContorller,
             let fromVC = view as? UIViewController else { return }
         toVC.model = item
         fromVC.navigationController?.pushViewController(toVC, animated: true)
     }
-    
+
 }
 
-extension GithubListDefaultRouter : Initializable {}
+extension GithubListDefaultRouter: Initializable {}

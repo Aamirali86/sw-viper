@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol GithubDetailView : class {
-    func displayDetailView(data : GithubDetailViewModel)
+protocol GithubDetailView: class {
+    func displayDetailView(data: GithubDetailViewModel)
     func displayError(errorMessage: String)
 }

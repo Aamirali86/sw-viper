@@ -8,12 +8,12 @@
 
 import Foundation
 
-class GithubListRequest : BaseRequest {
+class GithubListRequest: BaseRequest {
     var apiURL: String
     var method: HTTPMethod = .get
     var params: Params
-    
-    init(username : String) {
+
+    init(username: String) {
         self.apiURL = "users/\(username)/repos"
         self.params = [
             "per_page": "50"

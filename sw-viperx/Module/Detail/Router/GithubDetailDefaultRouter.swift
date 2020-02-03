@@ -8,8 +8,8 @@
 
 import UIKit
 
-class GithubDetailDefaultRouter : GithubDetailRouter {
-    
+class GithubDetailDefaultRouter: GithubDetailRouter {
+
     static func getDetailViewController() -> UIViewController? {
         guard let detailVC = GithubDetailDefaultRouter.initializeViewController() as? GithubDetailViewContorller else { return nil }
         return detailVC
@@ -17,4 +17,4 @@ class GithubDetailDefaultRouter : GithubDetailRouter {
 
 }
 
-extension GithubDetailDefaultRouter : Initializable {}
+extension GithubDetailDefaultRouter: Initializable {}

@@ -9,7 +9,7 @@
 import Foundation
 import ReSwift
 
-enum GithubListAction : Action {
+enum GithubListAction: Action {
     case success([GithubListViewModel])
     case failure(String)
 }

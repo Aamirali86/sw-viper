@@ -9,7 +9,7 @@
 import Foundation
 import ReSwift
 
-struct AppState : StateType {
-    let listState : GithubListState
-    let detailState : GithubDetailState
+struct AppState: StateType {
+    let listState: GithubListState
+    let detailState: GithubDetailState
 }

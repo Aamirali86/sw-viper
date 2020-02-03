@@ -9,8 +9,8 @@
 import UIKit
 
 protocol GithubListRouter {
-    
+
     static func getListViewController() -> UIViewController?
-    
+
     func navigateToDetailView(from view: GithubListView?, withItem item: GithubListViewModel)
 }

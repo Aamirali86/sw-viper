@@ -10,5 +10,5 @@ import UIKit
 import Swinject
 
 protocol GithubListBuilder {
-    func buildGithubListModule(resolver: Resolver, vc:UIViewController)
+    func buildGithubListModule(resolver: Resolver, vc: UIViewController)
 }

@@ -10,5 +10,5 @@ import ObjectMapper
 
 protocol ResponseMapper {
     associatedtype response
-    static func map(data : Any) throws -> [response]
+    static func map(data: Any) throws -> [response]
 }

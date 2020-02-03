@@ -9,7 +9,7 @@
 import Foundation
 import ReSwift
 
-struct GithubListState : StateType {
-    var list:[GithubListViewModel]
+struct GithubListState: StateType {
+    var list: [GithubListViewModel]
     var error: String?
 }

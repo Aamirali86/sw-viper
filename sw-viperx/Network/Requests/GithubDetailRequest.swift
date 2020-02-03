@@ -8,12 +8,12 @@
 
 import Foundation
 
-class GithubDetailRequest : BaseRequest {
+class GithubDetailRequest: BaseRequest {
     var apiURL: String
     var method: HTTPMethod = .get
     var params: Params
-    
-    init(username : String, repoName: String) {
+
+    init(username: String, repoName: String) {
         self.apiURL = "repos/\(username)/\(repoName)"
         self.params = [:]
     }

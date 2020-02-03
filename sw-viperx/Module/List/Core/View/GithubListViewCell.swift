@@ -8,12 +8,12 @@
 
 import UIKit
 
-class GithubListViewCell : UITableViewCell {
-    
+class GithubListViewCell: UITableViewCell {
+
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var details: UILabel!
     @IBOutlet weak var category: UILabel!
-    
+
     func setupCell(_ data: GithubListViewModel) {
         name.text = data.name
         details.text = data.description
